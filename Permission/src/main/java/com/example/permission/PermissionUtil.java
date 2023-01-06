@@ -1,4 +1,4 @@
-package com.example.multip.permissionUtil;
+package com.example.permission;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+
+import androidx.fragment.app.Fragment;
 
 public class PermissionUtil {
     public static boolean useRunTimePermission(){
@@ -22,6 +24,7 @@ public class PermissionUtil {
              activity.requestPermissions(permission, requestCode);
         }
     }
+
     public static boolean shouldShowRational(Activity activity, String permission){
         if (useRunTimePermission()){
             return activity.shouldShowRequestPermissionRationale(permission);
