@@ -1,5 +1,6 @@
 package com.example.multip.module;
-import androidx.appcompat.app.AlertDialog;
+import static com.example.permission.AlertDia.CustomDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.multip.R;
+import com.example.permission.AlertDia;
 import com.example.permission.PermissionUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +30,7 @@ Button LocBtn;
                 Toast.makeText(MainActivity.this, "Both permission Granted", Toast.LENGTH_SHORT).show();
             }else {
                 if (PermissionUtil.shouldShowRational(MainActivity.this,Manifest.permission.ACCESS_COARSE_LOCATION)||PermissionUtil.shouldShowRational(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION)){
-                        CustomDialog("Location Permission", "This app required Location permission", "OK", new DialogInterface.OnClickListener() {
+                    AlertDia.CustomDialog(MainActivity.this,"Location Permission", "This app required Location permission", "OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 PermissionUtil.goToAppSetting(MainActivity.this);
@@ -45,12 +47,5 @@ Button LocBtn;
 
     }
 
-void CustomDialog(String title, String message,String positiveBtnTitle, DialogInterface.OnClickListener positiveListener,String negativeBtnTitle,DialogInterface.OnClickListener negativeListener ){
-    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-    builder.setTitle(title);
-    builder.setMessage(message);
-    builder.setPositiveButton(positiveBtnTitle,positiveListener);
-    builder.setNegativeButton(negativeBtnTitle,negativeListener);
-    builder.create().show();
-}
+
 }
