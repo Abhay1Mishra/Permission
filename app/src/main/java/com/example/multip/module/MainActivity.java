@@ -1,5 +1,5 @@
 package com.example.multip.module;
-import static com.example.permission.AlertDia.CustomDialog;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.multip.R;
-import com.example.permission.AlertDia;
 import com.example.permission.PermissionUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +29,7 @@ Button LocBtn;
                 Toast.makeText(MainActivity.this, "Both permission Granted", Toast.LENGTH_SHORT).show();
             }else {
                 if (PermissionUtil.shouldShowRational(MainActivity.this,Manifest.permission.ACCESS_COARSE_LOCATION)||PermissionUtil.shouldShowRational(MainActivity.this,Manifest.permission.ACCESS_FINE_LOCATION)){
-                    AlertDia.CustomDialog(MainActivity.this,"Location Permission", "This app required Location permission", "OK", new DialogInterface.OnClickListener() {
+                    PermissionUtil.CustomDialog(MainActivity.this,"Location Permission", "This app required Location permission", "OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 PermissionUtil.goToAppSetting(MainActivity.this);
